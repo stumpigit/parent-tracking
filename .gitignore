@@ -1,0 +1,8 @@
+src/api/logs/celery.log
+src/api/data/temp/
+src/api/assets/
+src/api/data
+src/frontend/dist/
+src/frontend/node_modules/
+src/frontend/not_used_pages/
+src/api/*.html
