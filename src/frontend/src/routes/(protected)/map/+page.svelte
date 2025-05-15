@@ -15,8 +15,8 @@
 	import { getBottomLeft } from 'ol/extent';
 
 	$pageTitle = 'Map';
-
-	import { PUBLIC_HAKESCH_API_PATH } from '$env/dynamic/public';
+	import { env } from '$env/dynamic/public';
+	//import { PUBLIC_HAKESCH_API_PATH } from '$env/dynamic/public';
 
 	onMount(async () => {
 		proj4.defs(
@@ -50,7 +50,7 @@
 
 		map.on('singleclick', function (e) {
 			fetch(
-				PUBLIC_HAKESCH_API_PATH +
+				env.PUBLIC_HAKESCH_API_PATH +
 					'/isozones/?northing=' +
 					e.coordinate[0] +
 					'&easting=' +
