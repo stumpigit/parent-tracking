@@ -28,4 +28,4 @@ jobs:
         with:
           context: src/frontend
           push: true
-          tags: user/app:latest
+          tags: stumpisuter/parent-tracking-frontend:latest
