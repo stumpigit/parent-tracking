@@ -16,7 +16,7 @@
 
 	$pageTitle = 'Map';
 
-	import { PUBLIC_HAKESCH_API_PATH } from '$env/static/public';
+	import { PUBLIC_HAKESCH_API_PATH } from '$env/dynamic/public';
 
 	onMount(async () => {
 		proj4.defs(
