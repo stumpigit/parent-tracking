@@ -14,6 +14,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
 
+      - name: Prepare Environment Variables for Deployment
+        id: prepare-env
+        run: |
+          # Convert repository or organization variables to JSON format
+          echo '${{ toJSON(vars) }}' > env_vars.json
+
+          # Convert JSON to .env format
+          cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > .env
+          cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > /src/frontent/.env
+
+          #remove no longer needed env_vars.json file
+          rm -f env_vars.json
+
+          # Display the contents of the .env file (for debugging purposes)
+          cat .env
+
       - name: Run docker compose
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
