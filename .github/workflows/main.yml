@@ -16,6 +16,7 @@ jobs:
 
       - name: Prepare Environment Variables for Deployment
         id: prepare-env
+        working-directory: srv/frontend
         run: |
           # Convert repository or organization variables to JSON format
           echo '${{ toJSON(vars) }}' > env_vars.json
