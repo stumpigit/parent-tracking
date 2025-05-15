@@ -1,4 +1,4 @@
-name: Docker Compose Action
+ename: Docker Compose Action
 
 on: [push]
 
@@ -16,19 +16,18 @@ jobs:
 
       - name: Prepare Environment Variables for Deployment
         id: prepare-env
-        working-directory: src/frontend
         run: |
           # Convert repository or organization variables to JSON format
           echo '${{ toJSON(vars) }}' > env_vars.json
 
           # Convert JSON to .env format
-          cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > .env
+          cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > src/frontend/.env
 
           #remove no longer needed env_vars.json file
           rm -f env_vars.json
 
           # Display the contents of the .env file (for debugging purposes)
-          cat .env
+          cat src/frontend/.env
 
       - name: Run docker compose
         uses: hoverkraft-tech/compose-action@v2.0.1
