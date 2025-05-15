@@ -1,6 +1,6 @@
 name: Docker Compose Action
 
-on: [push]
+on: []
 
 jobs:
   build:
