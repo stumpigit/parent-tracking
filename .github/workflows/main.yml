@@ -22,7 +22,6 @@ jobs:
 
           # Convert JSON to .env format
           cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > .env
-          cat env_vars.json | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' > src/frontent/.env
 
           #remove no longer needed env_vars.json file
           rm -f env_vars.json
